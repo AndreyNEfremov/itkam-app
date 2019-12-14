@@ -1,0 +1,20 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.usersDialogs {}
+
+.userNameDialog {
+    padding: 10px;
+}
+
+.active {
+    color: gold;
+}
+
+.messages {}
+
+.message {
+    padding: 10px;
+}
