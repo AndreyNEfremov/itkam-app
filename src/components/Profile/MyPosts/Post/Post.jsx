@@ -8,7 +8,7 @@ const Post = (props) => {
             <img src="https://pp.userapi.com/c840323/v840323270/6e89a/JjC3BSfLuqE.jpg?ava=1" alt="" />
             {props.message}
             <div>
-                <span>Like!</span> {props.likesCount}
+                <span>Likes</span> {props.likesCount}
             </div>
         </div>
     )

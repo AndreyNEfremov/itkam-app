@@ -1,36 +1,59 @@
 import React from 'react';
 import classes from './Dialogs.module.css';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+
+const DialogItem = (props) => {
+    let path = '/dialogs/' + props.id
+    return (
+        <div className={classes.userNameDialog + ' ' + classes.active}>
+            <NavLink to={path}>{props.name}</NavLink>
+        </div>
+    )
+};
+
+const Message = (props) => {
+    return (
+        <div className={classes.message}>{props.text}</div>
+    )
+};
 
 const Dialogs = (props) => {
+
+    let dialogsData = [
+        { id: 1, name: "User One" },
+        { id: 2, name: "User Two" },
+        { id: 3, name: "User Three" },
+        { id: 4, name: "User Four" },
+        { id: 5, name: "User Five" },
+        { id: 6, name: "User Six" }
+    ];
+
+    let messagesData = [
+        { id: 1, message: "Hi User One" },
+        { id: 2, message: "Hellow User Two" },
+        { id: 3, message: "Hey User Three" },
+        { id: 4, message: "How User Four" },
+        { id: 5, message: "Aha User Five" },
+        { id: 6, message: "Whatta User Six" }
+    ]; 
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.usersDialogs}>
-                <div className={classes.userNameDialog + ' ' + classes.active}>
-                    <NavLink to='dialogs/1'>User One</NavLink>
-                </div>
-                <div className={classes.userNameDialog}>
-                    <NavLink to='dialogs/2'>User Two</NavLink>
-                </div>
-                <div className={classes.userNameDialog}>
-                    <NavLink to='dialogs/3'>User Three</NavLink>
-                </div>
-                <div className={classes.userNameDialog}>
-                    <NavLink to='dialogs/4'>User Four</NavLink>
-                </div>
-                <div className={classes.userNameDialog}>
-                    <NavLink to='dialogs/5'>User Five</NavLink>
-                </div>
-                <div className={classes.userNameDialog}>
-                    <NavLink to='dialogs/6'>User Six</NavLink>
-                </div>
+                <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
+                <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} />
+                {/* <DialogItem name='User Three' id='3' />
+                <DialogItem name='User Four' id='4' />
+                <DialogItem name='User Five' id='5' />
+                <DialogItem name='User Six' id='6' /> */}
             </div>
             <div className={classes.messages}>
-                <div className={classes.message}>Lorem ipsum dolor sit amet.</div>
-                <div className={classes.message}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, fugit.</div>
-                <div className={classes.message}>Lorem, ipsum dolor.</div>
-                <div className={classes.message}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus repudiandae laudantium adipisci laborum accusantium odit sequi, culpa quibusdam.</div>
-                <div className={classes.message}>Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                <Message text={messagesData[0].message} />
+                <Message text={messagesData[1].message}  />
+                {/* <Message text='Lorem, ipsum dolor.' />
+                <Message text='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus repudiandae laudantium adipisci laborum accusantium odit sequi, culpa quibusdam.' />
+                <Message text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, qui officia.' />
+                <Message text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, qui officia.' /> */}
             </div>
         </div>
     )
