@@ -10,18 +10,22 @@ import Music from './components/Music/Music';
 import Setin from './components/Setin/Setin';
 
 const App = (props) => {
+
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
         <Navbar />
         <div className='app-wrapper-content'>
-          {/* <Route
+          <Route
             path='/dialogs'
-            render={(props) => <Dialogs {...props} dialogsData={dialogsData} />}
-          /> */}
-          <Route path='/dialogs' component={Dialogs} />
-          <Route path='/profile' component={Profile} />
+            render={() => <Dialogs state={props.state.dialogsPage} />}
+          />
+          {/* <Route path='/dialogs' component={Dialogs} /> */}
+          <Route
+            path='/profile'
+            render={() => <Profile state={props.state.profilePage} />}
+          />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
           <Route path='/setin' component={Setin} />
