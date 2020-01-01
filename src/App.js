@@ -12,7 +12,7 @@ import Setin from './components/Setin/Setin';
 const App = (props) => {
 
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
         <Navbar />
@@ -31,7 +31,7 @@ const App = (props) => {
           <Route path='/setin' component={Setin} />
         </div>
       </div>
-    </BrowserRouter>
+    // </BrowserRouter>
   )
 };
 

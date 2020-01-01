@@ -15,6 +15,11 @@ const Dialogs = (props) => {
     // ];
 
     let messagesElements = props.state.messages.map(m => <Message message={m.message} />);
+    const newDialogElement = React.createRef();
+    const addDialogElement = () => {
+        let text = newDialogElement.current.value;
+        alert(text)
+    };
 
     return (
         <div className={classes.dialogs}>
@@ -39,6 +44,14 @@ const Dialogs = (props) => {
                 <Message text='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus repudiandae laudantium adipisci laborum accusantium odit sequi, culpa quibusdam.' />
                 <Message text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, qui officia.' />
                 <Message text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, qui officia.' /> */}
+                <div>
+                    <div>
+                        <textarea ref={newDialogElement} name="" id="" cols="100" rows="3"></textarea>
+                    </div>
+                    <div>
+                        <button onClick={addDialogElement}>Add post</button>
+                    </div>
+                </div>
             </div>
         </div>
     )
