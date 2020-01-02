@@ -18,8 +18,9 @@ const MyPosts = (props) => {
     const newPostElement = React.createRef();
 
     const addPost = () => {
-        let text = newPostElement.current.value;
-        alert(text)
+        let text = newPostElement.current.value
+        props.addPost(text)
+        newPostElement.current.value = '' //зануление коммента, чтобы после добавления поста блок текстареа был очищен
     };
 
     return (
