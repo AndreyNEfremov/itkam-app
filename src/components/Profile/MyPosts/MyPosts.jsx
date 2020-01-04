@@ -18,9 +18,13 @@ const MyPosts = (props) => {
     const newPostElement = React.createRef();
 
     const addPost = () => {
+        props.addPost()
+        props.updateNewPostText('') //очистка строки через отправку пропса "пустая строка" в стэйт и получения команды очистить
+    };
+
+    let onPostChange = () => {
         let text = newPostElement.current.value
-        props.addPost(text)
-        newPostElement.current.value = '' //зануление коммента, чтобы после добавления поста блок текстареа был очищен
+        props.updateNewPostText()
     };
 
     return (
@@ -30,7 +34,9 @@ const MyPosts = (props) => {
             </div>
             <div>
                 <div>
-                    <textarea ref={newPostElement} name="" id="" cols="100" rows="3"></textarea>
+                    <textarea onChange={onPostChange}
+                        ref={newPostElement}
+                        value={props.newPostText} name="" id="" cols="100" rows="3" />
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>

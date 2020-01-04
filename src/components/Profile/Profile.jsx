@@ -4,7 +4,7 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
-    
+
     // let posts = [
     //     { id: 1, message: "Post One", likesCount: 12 },
     //     { id: 2, message: "Post Two", likesCount: 5 },
@@ -17,7 +17,10 @@ const Profile = (props) => {
     return (
         <div>
             <ProfileInfo />
-            <MyPosts posts={props.state.posts} addPost={props.addPost} />
+            <MyPosts posts={props.profilePage.posts}
+                newPostText={props.profilePage.newPostText}
+                addPost={props.addPost}
+                updateNewPostText={props.updateNewPostText} />
         </div>
     )
 };
