@@ -19,12 +19,13 @@ const MyPosts = (props) => {
 
     const addPost = () => {
         props.addPost()
-        props.updateNewPostText('') //очистка строки через отправку пропса "пустая строка" в стэйт и получения команды очистить
+        // props.updateNewPostText('') //очистка строки через отправку пропса "пустая строка" в стэйт и получения команды очистить. 
+        //позже переносим в state.js, чтобы зачищало поле бизнес-логика,а не компонента UI
     };
 
     let onPostChange = () => {
         let text = newPostElement.current.value
-        props.updateNewPostText()
+        props.updateNewPostText(text) 
     };
 
     return (
