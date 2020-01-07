@@ -5,6 +5,7 @@
 // }
 
 let store = {
+    //приватные свойства
     _state: {
         profilePage: {
             posts: [
@@ -39,13 +40,18 @@ let store = {
 
         },
     },
-    getState () {
-        return this._state
-    },
     _callSubscribe() {
         console.log('state is changed')
     },
-    addPost() {
+    //методы не меняющие состояние стэйта, технические
+    getState() {
+        return this._state
+    },
+    subscribe(observer) {
+        this._callSubscribe = observer
+    },
+    // методы непосредственно работающие и меняющие стэйт
+    _addPost() {
         let newPost = {
             id: 5,
             message: this._state.profilePage.newPostText,
@@ -55,14 +61,18 @@ let store = {
         this._state.profilePage.newPostText = ''
         this._callSubscribe(this._state)
     },
+    // updateNewPostText(newText) {
+    //     this._state.profilePage.newPostText = newText
+    //     this._callSubscribe(this._state)
+    // },
 
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText
-        this._callSubscribe(this._state)
-    },
-
-    subscribe(observer) {
-        this._callSubscribe = observer
+    dispatch(action) { //type: 'ADD-POST'
+        if (action.type === 'ADD-POST') {
+            this._addPost()
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText
+            this._callSubscribe(this._state)
+        }
     }
 }
 window.store = store;
