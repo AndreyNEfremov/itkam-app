@@ -18,6 +18,7 @@ const MyPosts = (props) => {
     const newPostElement = React.createRef();
 
     const addPost = () => {
+        debugger
         props.addPost()
         // props.updateNewPostText('') //очистка строки через отправку пропса "пустая строка" в стэйт и получения команды очистить. 
         //позже переносим в state.js, чтобы зачищало поле бизнес-логика,а не компонента UI
