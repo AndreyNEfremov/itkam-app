@@ -3,6 +3,10 @@
 // let rerenderEntireTree = () => {
 //     console.log('state is changed')
 // }
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let store = {
     //приватные свойства
@@ -34,7 +38,8 @@ let store = {
                 { id: 4, message: "How User Four" },
                 { id: 5, message: "Aha User Five" },
                 { id: 6, message: "Whatta User Six" }
-            ]
+            ],
+            newMessageText: 'mstext'
         },
         sidebar: {
 
@@ -67,16 +72,32 @@ let store = {
     // },
 
     dispatch(action) { //type: 'ADD-POST'
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             this._addPost()
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
+            this._callSubscribe(this._state)
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.dialogsPage.newMessageText = action.newMsg
+            this._callSubscribe(this._state)
+        } else if (action.type === SEND_MESSAGE) {
+            let msg = this._state.dialogsPage.newMessageText
+            this._state.dialogsPage.newMessageText = '' //зануление строки
+            this._state.dialogsPage.messages.push({ id: 6, message: msg }) //пуш в массив
             this._callSubscribe(this._state)
         }
     }
-}
+};
+
 window.store = store;
 
+export const addPostActionCreater = () => ({ type: ADD_POST });
+export const updateNewPostTextActionCreater = (text) =>
+    ({ type: UPDATE_NEW_POST_TEXT, newText: text });
+
+export const sendMessageCreater = () => ({ type: SEND_MESSAGE });
+export const updateNewMessageTextCreater = (msg) =>
+    ({ type: UPDATE_NEW_MESSAGE_TEXT, newMsg: msg });
 // export const addPost = () => {
 //     let newPost = {
 //         id: 5,
