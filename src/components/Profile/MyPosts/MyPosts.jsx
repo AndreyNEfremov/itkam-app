@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
-import { addPostActionCreater, updateNewPostTextActionCreater } from '../../../Redux/State';
+import { addPostActionCreater, updateNewPostTextActionCreater } from '../../../Redux/profileReduser';
 
 const MyPosts = (props) => {
 
@@ -19,7 +19,6 @@ const MyPosts = (props) => {
     const newPostElement = React.createRef();
 
     const addPost = () => {
-        debugger
         props.dispatch(addPostActionCreater())
         // props.addPost()
         // props.updateNewPostText('') //очистка строки через отправку пропса "пустая строка" в стэйт и получения команды очистить. 
