@@ -10,7 +10,7 @@ import Music from './components/Music/Music';
 import Setin from './components/Setin/Setin';
 
 const App = (props) => {
-
+  debugger
   return (
     // <BrowserRouter>
       <div className='app-wrapper'>
