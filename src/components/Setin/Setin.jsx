@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Setin.module.css';
+// import classes from './Setin.module.css';
 
 const Setin = (props) => {
     return (
