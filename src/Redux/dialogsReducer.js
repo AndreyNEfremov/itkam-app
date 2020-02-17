@@ -23,15 +23,22 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
 
-    if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        state.newMessageText = action.newMsg
-    } else if (action.type === SEND_MESSAGE) {
-        let msg = state.newMessageText
-        state.newMessageText = '' //зануление строки
-        state.messages.push({ id: 6, message: msg }) //пуш в массив
-    }
-
-    return state
+    switch (action.type) {
+        case UPDATE_NEW_MESSAGE_TEXT:
+            return {
+                ...state,
+                newMessageText: action.newMsg
+            };
+        case SEND_MESSAGE:
+            let msg = state.newMessageText
+            return {
+                ...state,
+                newMessageText: '', //зануление строки
+                messages: [...state.messages, { id: 6, message: msg }] //раширение и пуш в массив
+            };
+        default:
+            return state
+    };
 };
 
 export const sendMessageCreater = () => ({ type: SEND_MESSAGE });

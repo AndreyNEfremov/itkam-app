@@ -100,9 +100,6 @@ let store = {
     }
 };
 
-window.store = store;
-
-
 // export const addPost = () => {
 //     let newPost = {
 //         id: 5,
