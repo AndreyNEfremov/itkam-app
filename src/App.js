@@ -8,6 +8,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Setin from './components/Setin/Setin';
+import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
   // debugger
@@ -25,6 +26,10 @@ const App = (props) => {
           <Route
             path='/profile'
             render={() => <Profile />}
+          />
+          <Route
+            path='/users'
+            render={() => <UsersContainer />}
           />
           <Route path='/news' component={News} />
           <Route path='/music' component={Music} />
