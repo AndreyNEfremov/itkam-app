@@ -24,7 +24,7 @@ const App = (props) => {
           />
           {/* <Route path='/dialogs' component={Dialogs} /> */}
           <Route
-            path='/profile'
+            path='/profile/:userId?'
             render={() => <ProfileContainer />}
           />
           <Route
