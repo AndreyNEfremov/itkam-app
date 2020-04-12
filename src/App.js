@@ -11,9 +11,7 @@ import Setin from './components/Setin/Setin';
 import UsersContainer from './components/Users/UsersContainer';
 
 const App = (props) => {
-  // debugger
   return (
-    // <BrowserRouter>
       <div className='app-wrapper'>
         <HeaderContainer />
         <Navbar />
@@ -22,7 +20,6 @@ const App = (props) => {
             path='/dialogs'
             render={() => <DialogsContainer />}
           />
-          {/* <Route path='/dialogs' component={Dialogs} /> */}
           <Route
             path='/profile/:userId?'
             render={() => <ProfileContainer />}

@@ -15,6 +15,6 @@ let reducers = combineReducers({
 
 let store = createStore(reducers);
 
-// window.store = store;
+// window.reduxStore = reduxStore;
 
 export default store;

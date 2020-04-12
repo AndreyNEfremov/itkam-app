@@ -2,7 +2,7 @@ import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 import sidebarReducer from "./sidebarReducer";
 
-//store = OOP
+//old_Store = OOP
 
 // let rerenderEntireTree = () => {
 //     console.log('state is changed')
@@ -13,7 +13,7 @@ import sidebarReducer from "./sidebarReducer";
 // const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 // const SEND_MESSAGE = 'SEND-MESSAGE';
 
-let store = {
+let old_Store = {
     //приватные свойства
     _state: {
         profilePage: {
@@ -71,53 +71,13 @@ let store = {
         this._state.profilePage.newPostText = ''
         this._callSubscribe(this._state)
     },
-    // updateNewPostText(newText) {
-    //     this._state.profilePage.newPostText = newText
-    //     this._callSubscribe(this._state)
-    // },
-
-    dispatch(action) { //type: 'ADD-POST'
+    dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
         this._state.sidebar = sidebarReducer(this._state.sidebar, action)
 
         this._callSubscribe(this._state)
-
-        // if (action.type === ADD_POST) {
-        //     this._addPost()
-        // } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        //     this._state.profilePage.newPostText = action.newText
-        //     this._callSubscribe(this._state)
-        // } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        //     this._state.dialogsPage.newMessageText = action.newMsg
-        //     this._callSubscribe(this._state)
-        // } else if (action.type === SEND_MESSAGE) {
-        //     let msg = this._state.dialogsPage.newMessageText
-        //     this._state.dialogsPage.newMessageText = '' //зануление строки
-        //     this._state.dialogsPage.messages.push({ id: 6, message: msg }) //пуш в массив
-        //     this._callSubscribe(this._state)
-        // }
     }
 };
 
-// export const addPost = () => {
-//     let newPost = {
-//         id: 5,
-//         message: state.profilePage.newPostText,
-//         likesCount: 0
-//     }
-//     state.profilePage.posts.push(newPost)
-//     state.profilePage.newPostText = ''
-//     rerenderEntireTree(state)
-// };
-
-// export const updateNewPostText = (newText) => {
-//     state.profilePage.newPostText = newText
-//     rerenderEntireTree(state)
-// };
-
-// export const subscribe = (observer) => {
-//     rerenderEntireTree = observer
-// };
-
-export default store
+export default old_Store

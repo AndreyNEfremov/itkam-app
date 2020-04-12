@@ -11,14 +11,14 @@ ReactDOM.render(
     <BrowserRouter>
         <Provider store={store}>
             <App />
-            {/* <App state={state} dispatch={store.dispatch.bind(store)} store={store}/> */}
+            {/* <App state={state} dispatch={old_Store.dispatch.bind(old_Store)} old_Store={old_Store}/> */}
         </Provider>
     </BrowserRouter>, document.getElementById('root'));
 
-// rerenderEntireTree(store.getState());
+// rerenderEntireTree(old_Store.getState());
 
-// store.subscribe(() => {
-//     let state = store.getState()
+// old_Store.subscribe(() => {
+//     let state = old_Store.getState()
 //     rerenderEntireTree(state)
 // });
 

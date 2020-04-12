@@ -7,14 +7,14 @@ import MyPosts from "./MyPosts";
 
 //     return (
 //         <StoreContext.Consumer>
-//             {(store) => {
-//                 let state = store.getState();
+//             {(old_Store) => {
+//                 let state = old_Store.getState();
 //                 const addPost = () => {
-//                     store.dispatch(addPostActionCreater())
+//                     old_Store.dispatch(addPostActionCreater())
 //                 }
 //                 let onPostChange = (text) => {
 //                     let action = updateNewPostTextActionCreater(text)
-//                     store.dispatch(action)
+//                     old_Store.dispatch(action)
 //                 }
 //                 return <MyPosts updateNewPostText={onPostChange}
 //                     addpost={addPost}

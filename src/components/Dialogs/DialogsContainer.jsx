@@ -7,18 +7,18 @@ import { sendMessageCreater, updateNewMessageTextCreater } from '../../Redux/dia
 
 //     return (
 //         <StoreContext.Consumer>
-//             {(store) => {
-//                 let state = store.getState().dialogsPage;
+//             {(old_Store) => {
+//                 let state = old_Store.getState().dialogsPage;
 //                 const onSendMessageClick = () => {
-//                     store.dispatch(sendMessageCreater())
+//                     old_Store.dispatch(sendMessageCreater())
 //                 };
 //                 const onNewMessageChange = (msg) => {
-//                     store.dispatch(updateNewMessageTextCreater(msg))
+//                     old_Store.dispatch(updateNewMessageTextCreater(msg))
 //                 };
 //                 return <Dialogs
 //                     updateNewMessageText={onNewMessageChange}
 //                     sendMessage={onSendMessageClick}
-//                     dialogsPage={store.getState().dialogsPage} />
+//                     dialogsPage={old_Store.getState().dialogsPage} />
 //             }
 //             }
 //         </StoreContext.Consumer>
