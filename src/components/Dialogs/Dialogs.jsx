@@ -5,18 +5,19 @@ import Message from './Message/Message';
 // import { sendMessageCreater, updateNewMessageTextCreater } from '../../Redux/dialogsReducer';
 
 const Dialogs = (props) => {
-
+    // debugger
     let state = props.dialogsPage;
-    let dialogsElements = state.dialogsData.map(dialog => <DialogItem name={dialog.name} id={dialog.id} />);
-    let messagesElements = state.messages.map(m => <Message message={m.message} />);
+    let dialogsElements = state.dialogsData.map(dialog => <DialogItem key={dialog.id} name={dialog.name}
+                                                                      id={dialog.id}/>);
+    let messagesElements = state.messages.map(m => <Message key={m.id} message={m.message}/>);
     let newMessageText = state.newMessageText;
-    
+
     const onSendMessageClick = () => {
         props.sendMessage()
     };
     const onNewMessageChange = (e) => {
         let msg = e.target.value
-        props.updateNewMessageText (msg)
+        props.updateNewMessageText(msg)
     };
 
     return (
@@ -44,10 +45,10 @@ const Dialogs = (props) => {
                 <Message text='Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, qui officia.' /> */}
                 <div>
                     <div>
-                        <textarea value={newMessageText} 
-                        placeholder='Enter your message' 
-                        onChange={onNewMessageChange}
-                        name="" id="" cols="100" rows="3"></textarea>
+                        <textarea value={newMessageText}
+                                  placeholder='Enter your message'
+                                  onChange={onNewMessageChange}
+                                  name="" id="" cols="100" rows="3"/>
                     </div>
                     <div>
                         <button onClick={onSendMessageClick}>Send message</button>

@@ -15,6 +15,7 @@ let reducers = combineReducers({
 
 let store = createStore(reducers);
 
-// window.reduxStore = reduxStore;
-
+window.store = store;
+console.log(store.getState());
+//ob'ectom vishe v liuboi moment mozhem izuchit' chto sidit v store zabiv v console >store.getState()
 export default store;

@@ -14,6 +14,8 @@ export const getUsers = (currentPage = 1, pageSize = 10) => {
             withCredentials: true
         })
         .then(response => {
-            return response.data
+            return response.data;
         })
 }
+
+

@@ -13,10 +13,10 @@ const Users = (props) => {
     return (
         <div>
             <div>
-                {pages.map((p, i) => {
+                {pages.map( (p, i) => {
                     return <span key={i} className={props.currentPage === p && classes.selectedPage}
                         onClick={() => { props.onPageChanged(p) }}>{p} </span>
-                })
+                    })
                 }
             </div>
             {
@@ -24,7 +24,8 @@ const Users = (props) => {
                     <span>
                         <div>
                             <NavLink to={'/profile/' + u.id}>
-                                <img src={u.photos.small != null ? u.photos.small : 'https://avavatar.ru/images/avatars/1/avatar_oC4jAgN51kPE3NGP.jpg'} className={classes.userPhoto} alt="" />
+                                {/*Navlink dlia perehoda na stranichku pol'zovatel'a, po suti tag <a>*/}
+                                <img src={u.photos.small != null ? u.photos.small : 'https://avavatar.ru/images/avatars/1/avatar_oC4jAgN51kPE3NGP.jpg'} className={classes.userPhoto} alt="user_photo" />
                             </NavLink>
                         </div>
                         <div>
