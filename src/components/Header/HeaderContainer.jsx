@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from './Header';
 import * as axios from 'axios';
-import { connect } from 'react-redux';
-import { setUserDataAC } from '../../Redux//reducer';
+import {connect} from 'react-redux';
+import {setAuthUserDataAC} from '../../Redux/authReducer';
 
 class HeaderContainer extends React.Component {
 
@@ -11,9 +11,10 @@ class HeaderContainer extends React.Component {
             withCredentials: true
         })
             .then(response => {
+                // debugger
                 if (response.data.resultCode === 0) {
-                    let { id, email, login } = response.data.data //деструктуризация данных, для чего и как - не понял.
-                    this.props.setUserDataAC(id, email, login)
+                    let {id, email, login} = response.data.data;
+                    this.props.setAuthUserDataAC(id, email, login)
                 }
             })
     };
@@ -21,11 +22,11 @@ class HeaderContainer extends React.Component {
     render() {
         return <Header {...this.props} />
     }
-};
+}
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     login: state.auth.login
 });
 
-export default connect(mapStateToProps, { setUserDataAC })(HeaderContainer);
+export default connect(mapStateToProps, {setAuthUserDataAC})(HeaderContainer);

@@ -1,11 +1,13 @@
-const SET_USER_DATA = 'SET-USER-DATA';
+const SET_USER_DATA = 'ET_USER_DATA '
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
     isAuth: false
+    // isFetching: false
 };
+
 
 const authReducer = (state = initialState, action) => {
 
@@ -15,12 +17,12 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.data,
                 isAuth: true
-            }
+            };
         default:
-            return state;
+            return state
     }
 };
 
-export const setUserDataAC = (userId, email, login) => ({ type: SET_USER_DATA, data: {userId, email, login} });
+export const setAuthUserDataAC = (userId, email, login) => ({ type: SET_USER_DATA, data: {userId, email, login} });
 
 export default authReducer;

@@ -3,7 +3,7 @@ import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 import sidebarReducer from "./sidebarReducer";
 import usersReducer from "./usersReducer";
-import authReducer from "./reducer";
+import authReducer from "./authReducer";
 
 let reducers = combineReducers({
     profilePage: profileReducer,
@@ -16,6 +16,6 @@ let reducers = combineReducers({
 let store = createStore(reducers);
 
 window.store = store;
-console.log(store.getState());
+// console.log(store.getState());
 //ob'ectom vishe v liuboi moment mozhem izuchit' chto sidit v store zabiv v console >store.getState()
 export default store;
