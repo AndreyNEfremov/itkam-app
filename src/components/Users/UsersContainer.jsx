@@ -9,24 +9,22 @@ import {
     toggleIsFetchingAC,
     toggleFollowingProgressAC
 } from '../../Redux/usersReducer';
-import * as axios from 'axios';
 import Users from './Users';
 import Preloader from '../Common/Preloader';
-import {getUsers} from '../../api/api';
+import {usersAPI as usersAPI} from "../../api/api";
 
 
 class UsersContainer extends React.Component {
 
     // constructor(props) {
     //     super(props);
-    //this.props = null;
-    //this.state = null;
-
+    //     this.props = null;
+    //     this.state = null;
     // };
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        getUsers(this.props.currentPage, this.props.pageSize).then(data => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
             this.props.toggleIsFetching(false);
             this.props.setUsers(data.items);
             this.props.setTotalUsersCount(data.totalCount);
@@ -34,13 +32,13 @@ class UsersContainer extends React.Component {
     };
 
     onPageChanged = (pageNumber) => {
-        this.props.setCurrentPage(pageNumber)
-        this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-            .then(response => {
+        this.props.setCurrentPage(pageNumber);
+        this.props.toggleIsFetching(true);
+        usersAPI.getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
                 // debugger
-                this.props.setUsers(response.data.items)
                 this.props.toggleIsFetching(false)
+                this.props.setUsers(data.items);
             })
     };
 
@@ -55,13 +53,13 @@ class UsersContainer extends React.Component {
                    users={this.props.users}
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
-                   // toggleFollowingProgress={this.props.toggleFollowingProgress} __ ne ispol'zuytsa v Users
-                   // followingInProgress={this.props.followingInProgress}
+                // toggleFollowingProgress={this.props.toggleFollowingProgress} __ ne ispol'zuytsa v Users
+                // followingInProgress={this.props.followingInProgress}
 
             />
         </>
     }
-};
+}
 
 let mapStateToProps = (state) => {
     return {
