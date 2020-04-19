@@ -11,7 +11,7 @@ import {
 } from '../../Redux/usersReducer';
 import Users from './Users';
 import Preloader from '../Common/Preloader';
-import {usersAPI as usersAPI} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 
 class UsersContainer extends React.Component {
@@ -37,7 +37,7 @@ class UsersContainer extends React.Component {
         usersAPI.getUsers(pageNumber, this.props.pageSize)
             .then(data => {
                 // debugger
-                this.props.toggleIsFetching(false)
+                this.props.toggleIsFetching(false);
                 this.props.setUsers(data.items);
             })
     };
@@ -53,8 +53,8 @@ class UsersContainer extends React.Component {
                    users={this.props.users}
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
-                // toggleFollowingProgress={this.props.toggleFollowingProgress} __ ne ispol'zuytsa v Users
-                // followingInProgress={this.props.followingInProgress}
+                   toggleFollowingProgress={this.props.toggleFollowingProgress}
+                   followingInProgress={this.props.followingInProgress}
 
             />
         </>

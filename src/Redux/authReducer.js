@@ -1,4 +1,4 @@
-const SET_USER_DATA = 'ET_USER_DATA '
+const SET_USER_DATA = 'SET_USER_DATA ';
 
 let initialState = {
     userId: null,
