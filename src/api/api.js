@@ -15,25 +15,14 @@ export const usersAPI = {
                 // debugger
                 return response.data;
             })
-    }
-};
-
-export const followUnfollowAPI = {
-    unfollow (value, userId) {
-        return instance.delete(`follow/${userId}`)
-            // .then(response => {
-            //     if (response.data.resultCode === 0) {
-            //         props.unfollow(u.id)
-            //     }
-            // })
     },
-    follow (value, userId) {
+
+    unfollow (userId) {
+        return instance.delete(`follow/${userId}`)
+    },
+
+    follow (userId) {
         return instance.post(`follow/${userId}`)
-    //         .then(response => {
-    //             if (response.data.resultCode === 0) {
-    //                 props.follow(u.id)
-    //             }
-    //         })
     }
 };
 
