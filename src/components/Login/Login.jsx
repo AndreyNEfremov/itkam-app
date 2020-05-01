@@ -1,12 +1,12 @@
 import React from 'react';
 // import classes from './Login.module.css';
 
-const TestReact = (props) => {
+const Login = (props) => {
     return (
         <div>
-            TestReact Component
+            Login Page
         </div>
     )
 };
 
-export default TestReact;
+export default Login;

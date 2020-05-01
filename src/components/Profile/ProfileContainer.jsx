@@ -1,17 +1,17 @@
 import React from 'react';
-// import MyPostsContainer from './MyPosts/MyPostsContainer';
-// import ProfileInfo from './ProfileInfo/ProfileInfo';
 import Profile from './Profile';
 import {connect} from 'react-redux';
 import {getUserProfileTC} from '../../Redux/profileReducer';
 import {withRouter} from 'react-router-dom';
+import {withAuthRedirect} from "../HOC/withAuthRedirect";
+import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = 2
+            userId = 5642
         }
         this.props.getUserProfileTC(userId);
         // usersAPI.getProfile(userId)
@@ -31,9 +31,11 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
 });
 
-let urlDataContainerComponent = withRouter(ProfileContainer);
-
-export default connect(mapStateToProps, {getUserProfileTC})(urlDataContainerComponent);
+export default compose(
+    connect(mapStateToProps, {getUserProfileTC}),
+    withRouter,
+    withAuthRedirect
+) (ProfileContainer)

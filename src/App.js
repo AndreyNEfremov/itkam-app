@@ -10,6 +10,7 @@ import Music from './components/Music/Music';
 import Setin from './components/Setin/Setin';
 import UsersContainer from './components/Users/UsersContainer';
 import TestReact from "./components/TestReact/TestReact";
+import Login from "./components/Login/Login";
 
 const App = () => {
     return (
@@ -33,6 +34,10 @@ const App = () => {
                 <Route path='/music' component={Music}/>
                 <Route path='/setin' component={Setin}/>
                 <Route path='/testreact' component={TestReact}/>
+                <Route
+                    path='/login'
+                    render={() => <Login/>}
+                />
             </div>
         </div>
         // </BrowserRouter>
