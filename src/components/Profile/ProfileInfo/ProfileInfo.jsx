@@ -19,7 +19,8 @@ const ProfileInfo = (props) => {
                 {/*     src='https://i.pinimg.com/280x280_RS/d6/31/49/d631494cd031449e502584c96cb3b042.jpg'*/}
                 {/*     alt='foto'/>*/}
                 <p><b>{props.profile.fullName}</b> account</p>
-                <ProfileStatus status={'Type here your status'}/>
+                <div>Статус:  <ProfileStatus status={props.status} updateStatusTC={props.updateStatusTC}/></div>
+                <p></p>
                 <div>Обо мне: {props.profile.aboutMe}</div>
                 <div>Ищу работу: {props.profile.lookingForAJobDescription}</div>
             </div>
