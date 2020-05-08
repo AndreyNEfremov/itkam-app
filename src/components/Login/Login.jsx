@@ -12,7 +12,7 @@ const LoginForm = (props) => {
                 <Field placeholder={'Password'} name={'password'} component={'input'} type="text"/>
             </div>
             <div>
-                <Field component={'input'} name={'rememberMe'} type="checkbox" /> remember me
+                <Field component={'input'} name={'rememberMe'} type="checkbox"/> remember me
             </div>
             <div>
                 <button>Login</button>
@@ -23,10 +23,10 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
 
-const Login = (props) => {
+const Login = () => {
     const onSubmit = (formData) => {
-
-    }
+        console.log(formData)
+    };
     return <div>
         <h1>Login Page</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
