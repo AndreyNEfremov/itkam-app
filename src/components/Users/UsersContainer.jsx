@@ -5,7 +5,7 @@ import {
     unfollowSuccessAC,
     setCurrentPageAC,
     toggleFollowingProgressAC, getUsersTC
-} from '../../Redux/usersReducer';
+} from '../../redux/usersReducer';
 import Users from './Users';
 import Preloader from '../Common/Preloader';
 import {compose} from "redux";
