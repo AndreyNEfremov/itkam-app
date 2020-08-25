@@ -86,44 +86,38 @@ export const toggleFollowingProgressAC = (isFetching, userId) => ({
 });
 
 export const getUsersTC = (currentPage, pageSize) => {//ThunkCreator budu oboznachat' kak TC
-
-    return (dispatch) => {
-
+    return async (dispatch) => {
         dispatch(toggleIsFetchingAC(true));
-
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(toggleIsFetchingAC(false));
-            dispatch(setUsersAC(data.items));
-            dispatch(setTotalUsersCountAC(data.totalCount));
-        })
+        let data = await usersAPI.getUsers(currentPage, pageSize);
+        dispatch(toggleIsFetchingAC(false));
+        dispatch(setUsersAC(data.items));
+        dispatch(setTotalUsersCountAC(data.totalCount));
     };
 };
 
-export const unfollow = (userId) => {
+const followUnfollowFlow = () => {
 
-    return (dispatch) => {
+}
+
+export const follow = (userId) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgressAC(true, userId));
-        usersAPI.unfollow(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(unfollowSuccessAC(userId))
-                }
-                dispatch(toggleFollowingProgressAC(false, userId));
-            })
+        let response = await usersAPI.follow(userId);
+        if (response.data.resultCode === 0) {
+            dispatch(followSuccessAC(userId))
+        }
+        dispatch(toggleFollowingProgressAC(false, userId));
     }
 };
 
-export const follow = (userId) => {
-
-    return (dispatch) => {
+export const unfollow = (userId) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgressAC(true, userId));
-        usersAPI.follow(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(followSuccessAC(userId))
-                }
-                dispatch(toggleFollowingProgressAC(false, userId));
-            })
+        let response = await usersAPI.unfollow(userId);
+        if (response.data.resultCode === 0) {
+            dispatch(unfollowSuccessAC(userId))
+        }
+        dispatch(toggleFollowingProgressAC(false, userId));
     }
 };
 
