@@ -11,21 +11,14 @@ import Preloader from '../Common/Preloader';
 import {compose} from "redux";
 
 class UsersContainer extends React.Component {
-
-    // constructor(props) {
-    //     super(props);
-    //     this.props = null;
-    //     this.state = null;
-    // };
-
     componentDidMount() {
-
-        this.props.getUsersTC(this.props.currentPage, this.props.pageSize);
+        const {currentPage, pageSize} = this.props;
+        this.props.getUsersTC(currentPage, pageSize);
     };
 
     onPageChanged = (pageNumber) => {
-
-        this.props.getUsersTC(pageNumber, this.props.pageSize);
+        const {pageSize} = this.props;
+        this.props.getUsersTC(pageNumber, pageSize);
     };
 
     render() {
